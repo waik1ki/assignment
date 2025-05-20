@@ -157,3 +157,6 @@ erDiagram
   USERS ||--o{ LOGIN_HISTORIES  : userId
   EVENTS }o--o{ REWARDS          : rewards
 ```
+
+# 서비스 플로우
+![img.png](플로우.png)

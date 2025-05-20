@@ -102,3 +102,58 @@ docker-compose up --build -d
 | GET    | http://localhost:3000/rewards/history |
 
 
+# ER Diagram
+
+```mermaid
+erDiagram
+  USERS {
+    ObjectId _id PK
+    string email
+    string password
+    UserRole role
+    Date createdAt
+    Date updatedAt
+  }
+  EVENTS {
+    ObjectId _id PK
+    string code
+    string title
+    string description
+    Date startAt
+    Date endAt
+    boolean isActive
+    Date createdAt
+    Date updatedAt
+  }
+  REWARDS {
+    ObjectId _id PK
+    string code
+    string label
+    string description
+    Object params
+    Date createdAt
+    Date updatedAt
+  }
+  REWARD_CLAIM_HISTORIES {
+    ObjectId _id PK
+    boolean success
+    string errorMessage
+    Date createdAt
+    Date updatedAt
+  }
+  LOGIN_HISTORIES {
+    ObjectId _id PK
+    boolean success
+    Date createdAt
+    Date updatedAt
+  }
+
+  USERS ||--o{ EVENTS           : createdBy
+  USERS ||--o{ EVENTS           : updatedBy
+  USERS ||--o{ REWARDS          : createdBy
+  EVENTS ||--o{ REWARD_CLAIM_HISTORIES : eventId
+  REWARDS ||--o{ REWARD_CLAIM_HISTORIES : rewardId
+  USERS ||--o{ REWARD_CLAIM_HISTORIES : userId
+  USERS ||--o{ LOGIN_HISTORIES  : userId
+  EVENTS }o--o{ REWARDS          : rewards
+```

@@ -4,6 +4,8 @@ services:
     container_name: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - ./seeds/init.js:/docker-entrypoint-initdb.d/init.js:ro
     networks:
       - network
 

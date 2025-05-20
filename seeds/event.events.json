@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "6829c446a50df3fea2f80d0b"
+  },
+  "code": "FL01",
+  "title": "첫 로그인 이벤트",
+  "startAt": {
+    "$date": "2025-05-18T00:00:00.000Z"
+  },
+  "endAt": {
+    "$date": "2025-12-31T00:00:00.000Z"
+  },
+  "isActive": true,
+  "conditions": [
+    {
+      "type": "LOGIN",
+      "count": "1",
+      "calculation": "COUNT"
+    }
+  ],
+  "rewards": [
+    {
+      "$oid": "682ab0437a0b041f25a757a2"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-05-18T11:28:06.268Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T12:51:15.895Z"
+  },
+  "__v": 0
+}]

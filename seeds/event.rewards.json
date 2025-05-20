@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "682ab0437a0b041f25a757a2"
+  },
+  "code": "POINT1000",
+  "label": "포인트 지급",
+  "params": {
+    "id": "포인트-id",
+    "count": 1000
+  },
+  "createdBy": {
+    "$oid": "6829e4de477dec2bf766b939"
+  },
+  "createdAt": {
+    "$date": "2025-05-19T04:14:59.523Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-19T04:14:59.523Z"
+  },
+  "__v": 0,
+  "description": "1000포인트를 지급합니다."
+},
+{
+  "_id": {
+    "$oid": "6829e4de477dec2bf766b93d"
+  },
+  "code": "ITEM0001",
+  "label": "아이템 지급",
+  "description": "인게임 아이템을 지급합니다.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-05-18T13:47:10.075Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T13:47:10.075Z"
+  },
+  "params": {
+    "id": "아이템-id",
+    "count": 1
+  },
+  "createdBy": "6829e4de477dec2bf766b939"
+}]

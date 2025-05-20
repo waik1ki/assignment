@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "68299826b452143c10e177f2"
+  },
+  "email": "user@tmail.ws",
+  "password": "$2b$10$SmMo5BRueXKl2l.KJbIkrOIBgO5vY5QIhqaXYhQW8V2tluDq7Z4Em",
+  "role": "USER",
+  "createdAt": {
+    "$date": "2025-05-18T08:19:50.552Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T11:10:54.659Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6829982fb452143c10e177f5"
+  },
+  "email": "admin@tmail.ws",
+  "password": "$2b$10$wZH79T6KXXy8E1W8edc7.OXqP2NicWS/gH0kaXx.NVW4qYB28PQMa",
+  "role": "ADMIN",
+  "createdAt": {
+    "$date": "2025-05-18T08:19:59.684Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T08:28:06.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682bd0551d1a3ce224e337b0"
+  },
+  "email": "operator@tmail.ws",
+  "password": "$2b$10$SmMo5BRueXKl2l.KJbIkrOIBgO5vY5QIhqaXYhQW8V2tluDq7Z4Em",
+  "role": "OPERATOR",
+  "createdAt": {
+    "$date": "2025-05-18T08:19:50.552Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T11:10:54.659Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682bd08b1d1a3ce224e337b1"
+  },
+  "email": "auditor@tmail.ws",
+  "password": "$2b$10$SmMo5BRueXKl2l.KJbIkrOIBgO5vY5QIhqaXYhQW8V2tluDq7Z4Em",
+  "role": " AUDITOR",
+  "createdAt": {
+    "$date": "2025-05-18T08:19:50.552Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T11:10:54.659Z"
+  },
+  "__v": 0
+}]

@@ -17,6 +17,19 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
-    "paths": {}
+    "paths": {
+      "@app/jwt": [
+        "libs/jwt/src"
+      ],
+      "@app/jwt/*": [
+        "libs/jwt/src/*"
+      ],
+      "@app/mongo": [
+        "libs/mongo/src"
+      ],
+      "@app/mongo/*": [
+        "libs/mongo/src/*"
+      ]
+    }
   }
 }

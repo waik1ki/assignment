@@ -44,6 +44,7 @@ export class EventService {
       startAt: new Date(dto.startAt),
       endAt: new Date(dto.endAt),
       createdBy: new Types.ObjectId(userId),
+      isActive: dto.isActive || false,
     };
 
     if (dto.description) {

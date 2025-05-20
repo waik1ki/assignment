@@ -37,27 +37,27 @@ export class EventController {
   }
 
   // 이벤트 상세 조회
-  @Get(':id')
-  getEvent(@Param('id') id: string): Promise<EventResponseDto> {
-    return this.eventService.getEvent(id);
+  @Get(':eventId')
+  getEvent(@Param('eventId') eventId: string): Promise<EventResponseDto> {
+    return this.eventService.getEvent(eventId);
   }
 
   // 이벤트 업데이트
-  @Patch(':id')
+  @Patch(':eventId')
   updateEvent(
-    @Param('id') id: string,
+    @Param('eventId') eventId: string,
     @Headers('x-user-id') userId: string,
     @Body() dto: UpdateEventRequestDto,
   ): Promise<EventResponseDto> {
-    return this.eventService.updateEvent(id, userId, dto);
+    return this.eventService.updateEvent(eventId, userId, dto);
   }
 
   // 이벤트 참여 보상 요청
-  @Post(':id/claim')
+  @Post(':eventId/claim')
   claimEventReward(
-    @Param('id') id: string,
+    @Param('eventId') eventId: string,
     @Headers('x-user-id') userId: string,
   ) {
-    return this.eventService.claimEventReward(id, userId);
+    return this.eventService.claimEventReward(eventId, userId);
   }
 }

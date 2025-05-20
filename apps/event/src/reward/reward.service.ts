@@ -79,9 +79,9 @@ export class RewardService {
     });
   }
 
-  async getReward(id: string) {
-    const reward = await this.rewardRepository.findById(id);
-    const events = await this.eventRepository.find({ rewards: id });
+  async getReward(rewardId: string) {
+    const reward = await this.rewardRepository.findById(rewardId);
+    const events = await this.eventRepository.find({ rewards: rewardId });
 
     return plainToInstance(RewardResponseDto, {
       id: reward?._id,

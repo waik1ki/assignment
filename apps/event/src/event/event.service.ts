@@ -81,8 +81,8 @@ export class EventService {
     });
   }
 
-  async getEvent(id: string): Promise<EventResponseDto> {
-    const event = await this.eventRepository.findById(id);
+  async getEvent(eventId: string): Promise<EventResponseDto> {
+    const event = await this.eventRepository.findById(eventId);
 
     if (!event) {
       throw new NotFoundException('일치하는 이벤트를 찾지 못했습니다.');
@@ -92,7 +92,7 @@ export class EventService {
   }
 
   async updateEvent(
-    id: string,
+    eventId: string,
     userid: string,
     dto: UpdateEventRequestDto,
   ): Promise<EventResponseDto> {
@@ -133,7 +133,7 @@ export class EventService {
     }
 
     const event = await this.eventRepository.findOneAndUpdate(
-      { _id: new Types.ObjectId(id) },
+      { _id: new Types.ObjectId(eventId) },
       updateQuery,
     );
 

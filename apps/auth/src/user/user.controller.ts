@@ -15,11 +15,11 @@ export class UserController {
   }
 
   // 유저 수정
-  @Patch(':id')
+  @Patch(':userId')
   updateUser(
-    @Param('id') id: string,
+    @Param('userId') userId: string,
     @Body() dto: UpdateUserRequestDto,
   ): Promise<UserResponseDto> {
-    return this.userService.updateUser(id, dto);
+    return this.userService.updateUser(userId, dto);
   }
 }

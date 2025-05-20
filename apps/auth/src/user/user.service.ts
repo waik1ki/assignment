@@ -30,7 +30,7 @@ export class UserService {
   }
 
   async updateUser(
-    id: string,
+    userId: string,
     dto: UpdateUserRequestDto,
   ): Promise<UserResponseDto> {
     const updateQuery = {};
@@ -51,7 +51,7 @@ export class UserService {
     }
 
     const user = await this.userRepository.findOneAndUpdate(
-      { _id: new Types.ObjectId(id) },
+      { _id: new Types.ObjectId(userId) },
       updateQuery,
     );
 

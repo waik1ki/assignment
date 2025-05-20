@@ -53,8 +53,8 @@ export class RewardController {
   }
 
   // 보상 상세 조회
-  @Get(':id')
-  getReward(@Param('id') id: string): Promise<RewardResponseDto> {
-    return this.rewardService.getReward(id);
+  @Get(':rewardId')
+  getReward(@Param('rewardId') rewardId: string): Promise<RewardResponseDto> {
+    return this.rewardService.getReward(rewardId);
   }
 }

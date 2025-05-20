@@ -51,6 +51,7 @@ export class EventController {
   }
 
   // 보상 목록 조회
+  @Roles('OPERATOR', 'ADMIN')
   @Get('rewards')
   proxyGetRewards(@Req() req: Request) {
     return this.gatewayService.proxy('EVENT', req);
@@ -63,6 +64,7 @@ export class EventController {
   }
 
   // 보상 상세 조회
+  @Roles('OPERATOR', 'ADMIN')
   @Get('rewards/:id')
   proxyGetReward(@Req() req: Request) {
     return this.gatewayService.proxy('EVENT', req);

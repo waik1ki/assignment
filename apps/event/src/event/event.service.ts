@@ -157,7 +157,7 @@ export class EventService {
 
     const event = await this.eventRepository.findById(id);
 
-    if (!event) {
+    if (!event || !event.isActive) {
       throw new NotFoundException('일치하는 이벤트를 찾지 못했습니다.');
     }
 

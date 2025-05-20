@@ -50,8 +50,6 @@ export class EventService {
 
     const event = await this.eventRepository.save(data);
 
-    console.log(event);
-
     return plainToInstance(EventResponseDto, event);
   }
 

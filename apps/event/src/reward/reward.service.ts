@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { RewardRepository } from 'apps/event/src/repositories/reward.repository';
 import { plainToInstance } from 'class-transformer';
 import { RewardResponseDto } from './dtos/reward-response.dto';
@@ -27,6 +27,12 @@ export class RewardService {
   ) {}
 
   async createReward(userId: string, dto: CreateRewardDto) {
+    const exReward = await this.rewardRepository.findByCode(dto.code);
+
+    if (exReward) {
+      throw new BadRequestException("동일한 code의 보상이 존재합니다.");
+    }
+
     const data: Partial<Reward> = {
       code: dto.code,
       label: dto.label,

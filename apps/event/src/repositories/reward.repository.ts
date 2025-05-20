@@ -30,4 +30,8 @@ export class RewardRepository extends BaseRepository<Reward> {
       .lean()
       .exec();
   }
+
+  findByCode(code: string): Promise<Event | null> {
+    return this.rewardModel.findOne({ code }).exec();
+  }
 }

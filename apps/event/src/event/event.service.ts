@@ -1,5 +1,9 @@
 import { EventRepository } from 'apps/event/src/repositories/event.repository';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateEventRequestDto } from './dtos/create-event-request.dto';
 import { plainToInstance } from 'class-transformer';
 import { EventResponseDto } from './dtos/event-response.dto';
@@ -31,7 +35,7 @@ export class EventService {
     const exEvent = await this.eventRepository.findByCode(dto.code);
 
     if (exEvent) {
-      throw new BadRequestException("동일한 code의 이벤트가 존재합니다.");
+      throw new BadRequestException('동일한 code의 이벤트가 존재합니다.');
     }
 
     const data: Partial<Event> = {
@@ -144,11 +148,11 @@ export class EventService {
     const claimedHistories = await this.rewardClaimHistoryRepository.find({
       eventId: new Types.ObjectId(id),
       userId: new Types.ObjectId(userId),
-      success: true
+      success: true,
     });
 
     if (claimedHistories.length > 0) {
-      throw new BadRequestException('이미 지급받은 보상 내역이 존재합니다.')
+      throw new BadRequestException('이미 지급받은 보상 내역이 존재합니다.');
     }
 
     const event = await this.eventRepository.findById(id);
@@ -158,6 +162,7 @@ export class EventService {
     }
 
     const ok = await this.conditionService.validate(userId, event);
+    console.log('ok', ok);
     if (!ok) {
       const histories = event.rewards.map((reward) => {
         return {
@@ -174,8 +179,14 @@ export class EventService {
       throw new BadRequestException('이벤트 조건을 만족하지 못했습니다.');
     }
 
-    const histories = await this.rewardService.grantRewards(userId, event.id, event.rewards);
+    const histories = await this.rewardService.grantRewards(
+      userId,
+      event.id,
+      event.rewards,
+    );
 
-    return histories.map((history) => plainToInstance(RewardClaimHistoryListItemDto, history));
+    return histories.map((history) =>
+      plainToInstance(RewardClaimHistoryListItemDto, history),
+    );
   }
 }

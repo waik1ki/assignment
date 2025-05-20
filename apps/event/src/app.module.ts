@@ -10,22 +10,20 @@ import {
   RewardClaimHistory,
   RewardClaimHistorySchema,
 } from 'apps/event/src/schemas/reward-claim-history.schema';
-import {
-  LoginHistory,
-  LoginHistorySchema,
-} from 'libs/common/schemas/login-history';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongoModule,
     MongoModule.connect('event'),
-    MongoModule.schema([
-      { name: Event.name, schema: EventSchema },
-      { name: Reward.name, schema: RewardSchema },
-      { name: RewardClaimHistory.name, schema: RewardClaimHistorySchema },
-      { name: LoginHistory.name, schema: LoginHistorySchema },
-    ]),
+    MongoModule.schema(
+      [
+        { name: Event.name, schema: EventSchema },
+        { name: Reward.name, schema: RewardSchema },
+        { name: RewardClaimHistory.name, schema: RewardClaimHistorySchema },
+      ],
+      'event',
+    ),
     EventModule,
     RewardModule,
     ConditionModule,

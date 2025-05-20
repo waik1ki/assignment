@@ -7,7 +7,7 @@ import { LoginHistory } from 'libs/common/schemas/login-history';
 @Injectable()
 export class LoginHistoryRepository extends BaseRepository<LoginHistory> {
   constructor(
-    @InjectModel(LoginHistory.name)
+    @InjectModel(LoginHistory.name, 'common')
     private readonly loginHistoryModel: Model<LoginHistory>,
   ) {
     super(loginHistoryModel);

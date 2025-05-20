@@ -21,19 +21,23 @@ export class ConditionService {
   }
 
   async validate(userId: string, event: Event): Promise<boolean> {
-    return Promise.resolve(
-      event.conditions.some(async (condition) => {
-        const validator = this.conditionValidator.get(
-          condition.type,
-        ) as ConditionValidator;
+    for (const condition of event.conditions) {
+      const validator = this.conditionValidator.get(
+        condition.type,
+      ) as ConditionValidator;
 
-        return await validator.isSatisfied(
-          userId,
-          condition,
-          event.startAt,
-          event.endAt,
-        );
-      }),
-    );
+      const isSatisfied = await validator.isSatisfied(
+        userId,
+        condition,
+        event.startAt,
+        event.endAt,
+      );
+
+      if (!isSatisfied) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

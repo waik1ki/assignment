@@ -6,7 +6,9 @@ import { User } from 'apps/auth/src/schemas/user.schema';
 
 @Injectable()
 export class UserRepository extends BaseRepository<User> {
-  constructor(@InjectModel(User.name) private readonly userModel: Model<User>) {
+  constructor(
+    @InjectModel(User.name, 'auth') private readonly userModel: Model<User>,
+  ) {
     super(userModel);
   }
 

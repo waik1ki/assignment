@@ -7,7 +7,7 @@ import { Event } from 'apps/event/src/schemas/event.schema';
 @Injectable()
 export class EventRepository extends BaseRepository<Event> {
   constructor(
-    @InjectModel(Event.name)
+    @InjectModel(Event.name, 'event')
     private readonly eventModel: Model<Event>,
   ) {
     super(eventModel);

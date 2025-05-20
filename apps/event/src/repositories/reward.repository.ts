@@ -8,7 +8,7 @@ import { Event } from '../schemas/event.schema';
 @Injectable()
 export class RewardRepository extends BaseRepository<Reward> {
   constructor(
-    @InjectModel(Reward.name)
+    @InjectModel(Reward.name, 'event')
     private readonly rewardModel: Model<Reward>,
   ) {
     super(rewardModel);

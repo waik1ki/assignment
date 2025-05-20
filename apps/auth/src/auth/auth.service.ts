@@ -10,15 +10,15 @@ import * as bcrypt from 'bcryptjs';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@app/jwt';
 import { UserRepository } from 'apps/auth/src/repositories/user.repository';
-import { LoginHistoryRepository } from 'libs/common/repositories/login-history.repository';
+import { CommonService } from 'libs/common/common.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly loginHistoryRepository: LoginHistoryRepository,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
+    private readonly commonService: CommonService,
   ) {}
 
   async login(request: LoginRequestDto): Promise<LoginResponseDto> {
@@ -30,10 +30,11 @@ export class AuthService {
     }
 
     if (!(await bcrypt.compare(password, user.password))) {
-      await this.loginHistoryRepository.save({
-        userId: user.id,
-        success: false,
-      });
+      await this.commonService.recordLogin(user.id, false);
+      // await this.loginHistoryRepository.save({
+      //   userId: user.id,
+      //   success: false,
+      // });
 
       throw new UnauthorizedException('이메일 또는 비밀번호를 확인해주세요.');
     }
@@ -43,7 +44,8 @@ export class AuthService {
     const expiresIn = this.configService.get('JWT_EXPIRES_IN');
     const expires = new Date(Date.now() + expiresIn * 1000);
 
-    await this.loginHistoryRepository.save({ userId: user.id, success: true });
+    await this.commonService.recordLogin(user.id, true);
+    // await this.loginHistoryRepository.save({ userId: user.id, success: true });
 
     return plainToInstance(LoginResponseDto, {
       id: user.id,

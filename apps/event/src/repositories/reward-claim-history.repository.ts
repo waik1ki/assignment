@@ -7,7 +7,7 @@ import { RewardClaimHistory } from 'apps/event/src/schemas/reward-claim-history.
 @Injectable()
 export class RewardClaimHistoryRepository extends BaseRepository<RewardClaimHistory> {
   constructor(
-    @InjectModel(RewardClaimHistory.name)
+    @InjectModel(RewardClaimHistory.name, 'event')
     private readonly rewardClaimHistoryModel: Model<RewardClaimHistory>,
   ) {
     super(rewardClaimHistoryModel);

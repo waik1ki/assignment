@@ -57,9 +57,9 @@ docker-compose up --build -d
 
 ## EVENT
 ### 1. 이벤트 생성
-| Method | Endpoint                     | Body                                               |
-| - |------------------------------|----------------------------------------------------|
-| POST | http://localhost:3000/events | {"code":"FL01", "title":"첫 로그인 이벤트", "startAt":"2025-05-20", "endAt":"2025-11-11", "conditions":{"type": "LOGIN", "count": 1, "calculation": "COUNT"}, "rewards":["682ab0437a0b041f25a757a2"]}     |
+| Method | Endpoint                     | Body                                                                                                                                                                                             |
+|--------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| POST   | http://localhost:3000/events | {"code":"FL01", "title":"첫 로그인 이벤트", "startAt":"2025-05-20", "endAt":"2025-11-11", "conditions":[{"type": "LOGIN", "count": 1, "calculation": "COUNT"}], "rewards":["682ab0437a0b041f25a757a2"]} |
 
 ### 2. 이벤트 목록 조회
 | Method | Endpoint                     |

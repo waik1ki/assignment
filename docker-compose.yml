@@ -1,0 +1,55 @@
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - network
+
+  auth:
+    build:
+      context: .
+      dockerfile: apps/auth/Dockerfile
+    container_name: auth
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo
+    networks:
+      - network
+
+  event:
+    build:
+      context: .
+      dockerfile: apps/event/Dockerfile
+    container_name: event
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo
+    networks:
+      - network
+
+  gateway:
+    build:
+      context: .
+      dockerfile: apps/gateway/Dockerfile
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo
+      - auth
+      - event
+    networks:
+      - network
+
+networks:
+  network:
